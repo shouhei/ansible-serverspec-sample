@@ -1,6 +1,7 @@
 ---
 - name: Install Nginx, Go, Mecab
   hosts: web-server
+  become: yes
   remote_user: vagrant
   # remote_user: user
   become_user: root
