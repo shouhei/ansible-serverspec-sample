@@ -1,0 +1,16 @@
+---
+- name: Install latest git
+  yum: name=git state=present enablerepo=wing
+
+- name: Download golang
+  get_url: url=https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz sha256sum=e40c36ae71756198478624ed1bb4ce17597b3c19d243f3f0899bb5740d56212a dest=~/go1.6.2.linux-amd64.tar.gz force=True
+  register: tarball
+
+- name: unarchive golang
+  unarchive: src=~/{{tarball}} dest=/usr/local/bin
+
+- name: copy bashrc
+  template: src=bashrc dest=~/.bashrc
+
+- name: export values
+  shell: echo 'export GOROOT=/usr/local/bin/go' >> ~/.bashrc && echo 'export GOPATH=$HOME/.go' >> ~/.bashrc && echo 'export PATH=$GOROOT/bin:$GOPATH/bin:$PATH' >> ~/.bashrc

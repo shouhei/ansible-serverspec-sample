@@ -1,0 +1,11 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+export GOROOT=/usr/local/bin/go
+export GOPATH=$HOGE/.go
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH

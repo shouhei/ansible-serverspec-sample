@@ -1,0 +1,5 @@
+---
+mecab_pacakges:
+  - mecab
+  - mecab-ipadic
+  - mecab-devel

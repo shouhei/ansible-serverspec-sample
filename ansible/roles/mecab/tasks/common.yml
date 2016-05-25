@@ -1,0 +1,10 @@
+---
+- name: Install Mecab repo
+  yum: name=http://packages.groonga.org/centos/groonga-release-1.1.0-1.noarch.rpm state=present
+
+- name: Install Mecab
+  yum: name={{item}} state=present
+  with_items: mecab_packages
+
+- name: export mecab val
+  shell: echo 'export CGO_LDFLAGS="`mecab-config --libs`"' >> ~/.bashrc && echo 'export CGO_FLAGS="`mecab-config --inc-dir`"' >> ~/.bashrc

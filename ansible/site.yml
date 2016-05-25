@@ -1,0 +1,13 @@
+---
+- name: Install Nginx, Go, Mecab
+  hosts: web-server
+  remote_user: vagrant
+  # remote_user: user
+  become_user: root
+  become_method: sudo
+
+  roles:
+    - common
+    - nginx
+    - go
+    - mecab
